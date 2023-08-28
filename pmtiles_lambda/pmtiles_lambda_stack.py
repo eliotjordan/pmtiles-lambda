@@ -32,15 +32,16 @@ class PmtilesLambdaStack(Stack):
         )
 
         # S3 Permissions
-        permission = iam.PolicyStatement(
-            actions=["s3:GetObject"],
-            resources=[
-                f"arn:aws:s3:::figgy-geo-{stage}/*",
-                "arn:aws::s3:::pul-tile-images/*",
-                "arn:aws:s3:::*/*"
-            ]
-        )
-        lambda_function.add_to_role_policy(permission)
+        # permission = iam.PolicyStatement(
+        #     actions=["s3:GetObject"],
+        #     resources=[
+        #         f"arn:aws:s3:::figgy-geo-{stage}/*",
+        #         "arn:aws::s3:::pul-tile-images/*",
+        #         "arn:aws::s3:::*/*"
+        #     ]
+        # )
+        # lambda_function.add_to_role_policy(permission)
+        # role = iam.Role( self, "Role", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
 
         # Add function url to primary lambda
         # Use instead of API gateway to bypass 30 second gateway timeout limit

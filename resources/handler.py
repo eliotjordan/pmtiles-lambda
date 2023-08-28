@@ -1,7 +1,4 @@
-"""AWS Lambda handler."""
 import logging
-import middleware
-import urllib3
 import json
 from fastapi import FastAPI
 from mangum import Mangum
@@ -17,4 +14,4 @@ def read_root():
 def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
 
-handler = Mangum(app, lifespan="off")
+handler = Mangum(app)
